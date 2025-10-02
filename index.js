@@ -40,6 +40,10 @@ function preprocessMessageText(text) {
 
     let processedText = text.trim();
 
+    // --- Remove message tags like "Name Message #N:" from the beginning ---
+    // Matches patterns like "Kip Message #8:" at the start of the text
+    processedText = processedText.replace(/^.+?\s+Message\s+#\d+:\s*/i, '');
+
     // --- Handle Edge Cases (Incomplete brackets at absolute start/end) ---
 
     // Case 1: First line ends with OOC:] or OOC:) but no opener on that line
